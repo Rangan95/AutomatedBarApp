@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">AutomatedBarApp</string>
+    <string name="title_search">Search</string>
+    <string name="title_dashboard">Cocktails</string>
+    <string name="title_bottles">Bottles</string>
+
+    <string name="pump_button_label_1">1 : </string>
+    <string name="pump_button_text_2">Set 2</string>
+    <string name="pump_button_text_3">Set 3</string>
+    <string name="pump_button_text_4">Set 4</string>
+    <string name="pump_button_text_5">Set 5</string>
+    <string name="pump_button_text_6">Set 6</string>
+    <string name="pump_button_text_7">Set 7</string>
+    <string name="pump_button_text_8">Set 8</string>
+    <string name="pump_button_text_9">Set 9</string>
+    <string name="pump_button_text_10">Set 10</string>
+    <string name="pump_button_text_11">Set 11</string>
+    <string name="pump_button_text_12">Set 12</string>
+    <string name="pump_button_text_13">Set 13</string>
+    <string name="pump_button_text_14">Set 14</string>
+    <string name="pump_button_text_15">Set 15</string>
+    <string name="pump_button_text_16">Set 16</string>
+
+    <string name="pump_default_value_text">None</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
