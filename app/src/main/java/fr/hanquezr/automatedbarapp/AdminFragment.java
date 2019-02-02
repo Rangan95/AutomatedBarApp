@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import fr.hanquezr.automatedbarapp.serverCall.ServerCallClean;
 import fr.hanquezr.automatedbarapp.serverCall.ServerCallPurge;
+import fr.hanquezr.automatedbarapp.serverCall.ServerCallTest;
 import fr.hanquezr.automatedbarapp.utils.PropertyUtils;
 import fr.hanquezr.automatedbarapp.utils.StringValidator;
 
@@ -46,6 +47,14 @@ public class AdminFragment extends Fragment {
             public void onClick(View v) {
                 ServerCallClean serverCallClean = new ServerCallClean(getContext());
                 serverCallClean.execute();
+            }
+        });
+
+        rootView.findViewById(R.id.test_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ServerCallTest serverCallTest = new ServerCallTest(getContext());
+                serverCallTest.execute();
             }
         });
 
