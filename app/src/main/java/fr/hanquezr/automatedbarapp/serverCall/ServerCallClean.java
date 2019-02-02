@@ -16,6 +16,7 @@ import fr.hanquezr.automatedbarapp.bdd.dao.BottleDao;
 import fr.hanquezr.automatedbarapp.bdd.dao.PlaceDao;
 import fr.hanquezr.automatedbarapp.model.Bottle;
 import fr.hanquezr.automatedbarapp.model.Cocktail;
+import fr.hanquezr.automatedbarapp.utils.PropertyUtils;
 
 public class ServerCallClean extends AsyncTask<Void, Void, String> {
 
@@ -59,9 +60,10 @@ public class ServerCallClean extends AsyncTask<Void, Void, String> {
 
     private String open () {
         String error = null;
+        PropertyUtils propertyUtils = new PropertyUtils(context);
 
         try {
-            clientSocket = new Socket("192.168.1.89", 38608);
+            clientSocket = new Socket(propertyUtils.getProperty("ip_address"), 38608);
             in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
             out = new PrintWriter(clientSocket.getOutputStream(), true);
         } catch (IOException e) {
