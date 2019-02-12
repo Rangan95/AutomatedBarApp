@@ -81,15 +81,15 @@ public class ServerCallTest extends AsyncTask<Void, Void, String> {
     private String runRequestConstructor () {
         StringBuilder builder = new StringBuilder("PUMPS_SEQUENTIAL_WITH_WAIT ");
 
-        builder.append(String.valueOf(5000).concat(" "));
+        builder.append(String.valueOf(3000).concat(" "));
 
         for (int i = 0; i < 16; i++) {
             builder.append(String.valueOf(i).concat(" "));
 
             if (i == 15)
-                builder.append(String.valueOf(30000));
+                builder.append(String.valueOf(2000));
             else
-                builder.append(String.valueOf(30000).concat(" "));
+                builder.append(String.valueOf(2000).concat(" "));
         }
 
         return builder.toString();
