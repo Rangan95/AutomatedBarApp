@@ -69,13 +69,8 @@ public class ServerCallTest extends AsyncTask<Void, Void, String> {
         String error = null;
 
         try {
-            for (int i = 0; i < 16; i++) {
-                errorServerTreatment(in.readLine());
-                out.println("200");
-                out.println(runRequestConstructor(i));
-                errorServerTreatment(in.readLine());
-                errorServerTreatment(in.readLine());
-            }
+            out.println(runRequestConstructor());
+            errorServerTreatment(in.readLine());
         } catch (Exception e) {
             error = "Erreur server : " + e.getMessage();
         }
@@ -83,16 +78,21 @@ public class ServerCallTest extends AsyncTask<Void, Void, String> {
         return error;
     }
 
-    private String runRequestConstructor (int bottleIdx) {
-        String message = "";
+    private String runRequestConstructor () {
+        StringBuilder builder = new StringBuilder("PUMPS_SEQUENTIAL_WITH_WAIT ");
 
-        message += 1 + " ";
-        message += bottleIdx + " ";
-        message += 30000 + " ";
+        builder.append(String.valueOf(5000).concat(" "));
 
-        message = message.substring(0, message.length() - 1);
+        for (int i = 0; i < 16; i++) {
+            builder.append(String.valueOf(i).concat(" "));
 
-        return "1 " + bottleIdx + " 2000";
+            if (i == 15)
+                builder.append(String.valueOf(30000));
+            else
+                builder.append(String.valueOf(30000).concat(" "));
+        }
+
+        return builder.toString();
     }
 
     public void errorServerTreatment (String serverMessage) throws Exception {
@@ -104,10 +104,12 @@ public class ServerCallTest extends AsyncTask<Void, Void, String> {
         String error = null;
 
         try {
+            out.println("STOP");
+            errorServerTreatment(in.readLine());
             out.close();
             in.close();
             clientSocket.close();
-        } catch (IOException e) {
+        } catch (Exception e) {
             error = "Erreur server : " + e.getMessage();
         }
 

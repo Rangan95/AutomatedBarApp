@@ -77,10 +77,7 @@ public class ServerCallPurge extends AsyncTask<Void, Void, String> {
         String error = null;
 
         try {
-            errorServerTreatment(in.readLine());
-            out.println("200");
             out.println(runRequestConstructor());
-            errorServerTreatment(in.readLine());
             errorServerTreatment(in.readLine());
         } catch (Exception e) {
             error = "Erreur server : " + e.getMessage();
@@ -90,18 +87,18 @@ public class ServerCallPurge extends AsyncTask<Void, Void, String> {
     }
 
     private String runRequestConstructor () {
-        String message = "";
-
-        message += 16 + " ";
+        StringBuilder builder = new StringBuilder("PUMPS_WITH_THREAD ");
 
         for (int i = 0; i < 16; i++) {
-            message += i + " ";
-            message += 10000 + " ";
+            builder.append(String.valueOf(i).concat(" "));
+
+            if (i == 15)
+                builder.append(String.valueOf(10000));
+            else
+                builder.append(String.valueOf(10000).concat(" "));
         }
 
-        message = message.substring(0, message.length() - 1);
-
-        return message;
+        return builder.toString();
     }
 
     public void errorServerTreatment (String serverMessage) throws Exception {
@@ -113,10 +110,12 @@ public class ServerCallPurge extends AsyncTask<Void, Void, String> {
         String error = null;
 
         try {
+            out.println("STOP");
+            errorServerTreatment(in.readLine());
             out.close();
             in.close();
             clientSocket.close();
-        } catch (IOException e) {
+        } catch (Exception e) {
             error = "Erreur server : " + e.getMessage();
         }
 

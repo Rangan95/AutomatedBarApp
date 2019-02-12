@@ -116,10 +116,7 @@ public class ServerCallCocktail extends AsyncTask<Cocktail, Void, String> {
         String error = null;
 
         try {
-            errorServerTreatment(in.readLine());
-            out.println("200");
             out.println(runRequestConstructor(cocktail));
-            errorServerTreatment(in.readLine());
             errorServerTreatment(in.readLine());
         } catch (Exception e) {
             error = "Erreur server : " + e.getMessage();
@@ -129,11 +126,12 @@ public class ServerCallCocktail extends AsyncTask<Cocktail, Void, String> {
     }
 
     private String runRequestConstructor (Cocktail cocktail) {
-        String message = "";
-
-        message += cocktail.getIngredients().size() + " ";
+        StringBuilder builder = new StringBuilder("PUMPS_WITH_THREAD ");
+        int nbIngredients = cocktail.getIngredients().size();
+        int cpt = 0;
 
         for (Map.Entry<String, Double> ingredient : cocktail.getIngredients().entrySet()) {
+            cpt++;
             BottleDao bottleDao = new BottleDao(context);
             bottleDao.open();
             List<Bottle> bottles = bottleDao.readAllBottleFromName(ingredient.getKey().replace(" ", "_"));
@@ -153,13 +151,15 @@ public class ServerCallCocktail extends AsyncTask<Cocktail, Void, String> {
                 }
             }
 
-            message += placeFound + " ";
-            message += ((ingredient.getValue() * 1000) * time) * 1000 + " ";
+            builder.append(String.valueOf(placeFound).concat(" "));
+
+            if (cpt == nbIngredients)
+                builder.append(String.valueOf(((ingredient.getValue() * 1000) * time) * 1000));
+            else
+                builder.append(String.valueOf(((ingredient.getValue() * 1000) * time) * 1000).concat(" "));
         }
 
-        message = message.substring(0, message.length() - 1);
-
-        return message;
+        return builder.toString();
     }
 
     public void errorServerTreatment (String serverMessage) throws Exception {
@@ -171,10 +171,12 @@ public class ServerCallCocktail extends AsyncTask<Cocktail, Void, String> {
         String error = null;
 
         try {
+            out.println("STOP");
+            errorServerTreatment(in.readLine());
             out.close();
             in.close();
             clientSocket.close();
-        } catch (IOException e) {
+        } catch (Exception e) {
             error = "Erreur server : " + e.getMessage();
         }
 
