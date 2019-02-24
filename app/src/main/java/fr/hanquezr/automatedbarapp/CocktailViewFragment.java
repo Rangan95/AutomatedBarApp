@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.Map;
@@ -30,6 +31,8 @@ public class CocktailViewFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_cocktail_view, container, false);
+
+        ((ImageView)rootView.findViewById(R.id.cocktail_view_image)).setImageResource(R.drawable.roman_cosmo_martini_cocktail);
 
         CocktailDao cocktailDao = new CocktailDao(getContext());
         cocktailDao.open();

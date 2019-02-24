@@ -9,29 +9,52 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:id="@+id/ingredientView">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/view_cocktail_name"
-            android:gravity="center"
-            android:textStyle="bold"
-            android:hint="Nom"/>
-
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="100dp">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/view_cocktail_textview"/>
-        </ScrollView>
+        android:id="@+id/fullView">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dip"
-            android:layout_weight="1"
+            android:layout_weight="88"
+            android:id="@+id/cocktailView"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:id="@+id/ingredientView"
+                android:layout_weight="1"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/view_cocktail_name"
+                    style="@style/CocktailName" />
+
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        style="@style/CocktailIngredients"
+                        android:id="@+id/view_cocktail_textview"/>
+                </ScrollView>
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/cocktail_view_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:adjustViewBounds="true"
+                android:padding="5dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dip"
+            android:layout_weight="12"
             android:gravity="center|bottom"
             android:orientation="vertical">
             <LinearLayout

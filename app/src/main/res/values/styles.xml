@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
@@ -6,6 +6,28 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowBackground">@color/colorBackground</item>
+        <item name="buttonStyle">@style/ButtonTheme</item>
+    </style>
+
+    <style name="ButtonTheme" parent="@android:style/Widget.Button">
+        <item name="android:textColor">@color/colorButtonText</item>
+        <item name="android:shadowColor">#FF000000</item>
+        <item name="android:backgroundTint" tools:targetApi="lollipop">@color/colorButton</item>
+        <item name="android:background">@android:drawable/btn_default_small</item><!-- only way to change this is to change the src image -->
+    </style>
+
+    <style name="CocktailName" parent="@android:style/Widget.TextView">
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">#000</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:layout_marginBottom">30sp</item>
+    </style>
+
+    <style name="CocktailIngredients" parent="@android:style/Widget.TextView">
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">15sp</item>
     </style>
 
 </resources>

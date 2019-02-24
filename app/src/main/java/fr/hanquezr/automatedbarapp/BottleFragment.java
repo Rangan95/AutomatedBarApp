@@ -14,7 +14,7 @@ import android.view.ViewGroup;
 public class BottleFragment extends Fragment {
 
     private static final String ARG_COLUMN_COUNT = "column-count";
-    private int mColumnCount = 2;
+    private int mColumnCount = 4;
 
     public BottleFragment() {
         // Required empty public constructor

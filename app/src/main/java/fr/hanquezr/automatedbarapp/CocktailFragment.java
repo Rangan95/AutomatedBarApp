@@ -17,7 +17,7 @@ import fr.hanquezr.automatedbarapp.model.Cocktail;
 public class CocktailFragment extends Fragment {
 
     private static final String ARG_COLUMN_COUNT = "column-count";
-    private int mColumnCount = 3;
+    private int mColumnCount = 5;
 
     public CocktailFragment() {
         // Required empty public constructor
