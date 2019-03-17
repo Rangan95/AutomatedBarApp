@@ -36,7 +36,7 @@ public class CocktailViewFragment extends Fragment {
 
         CocktailDao cocktailDao = new CocktailDao(getContext());
         cocktailDao.open();
-        final Cocktail cocktail = cocktailDao.readCocktailFromName(getArguments().getString("cocktailName"));
+        final Cocktail cocktail = cocktailDao.read(getArguments().getString("cocktailName"));
 
         ((TextView)rootView.findViewById(R.id.view_cocktail_name)).setText(cocktail.getName());
 

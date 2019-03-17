@@ -9,6 +9,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+import fr.hanquezr.automatedbarapp.bdd.dao.builder.SimpleRequestFilter;
 import fr.hanquezr.automatedbarapp.model.Bottle;
 
 public class BottleDao extends AbstractDao {
@@ -18,9 +19,11 @@ public class BottleDao extends AbstractDao {
     }
 
     public Bottle readBottleFromId (String id) {
-        String query = "SELECT * FROM BOTTLE_TABLE WHERE id = ?";
+        SimpleRequestFilter simpleRequestFilter = new SimpleRequestFilter("BOTTLE_TABLE");
+        simpleRequestFilter.addArgument("id", id);
+        simpleRequestFilter.buildArgument();
 
-        Cursor c = mDb.rawQuery(query, new String[] {id});
+        Cursor c = mDb.rawQuery(simpleRequestFilter.getQuery(), simpleRequestFilter.getArguments());
 
         if (c.moveToNext()) {
             Bottle bottle = new Bottle();
@@ -37,9 +40,12 @@ public class BottleDao extends AbstractDao {
     }
 
     public Bottle readBottleFromNameAndMaxCapacity (String name, String maxCapacity) {
-        String query = "SELECT * FROM BOTTLE_TABLE WHERE name = ? and maxCapacity = ?";
+        SimpleRequestFilter simpleRequestFilter = new SimpleRequestFilter("BOTTLE_TABLE");
+        simpleRequestFilter.addArgument("name", name);
+        simpleRequestFilter.addArgument("maxCapacity", maxCapacity);
+        simpleRequestFilter.buildArgument();
 
-        Cursor c = mDb.rawQuery(query, new String[] {name, maxCapacity});
+        Cursor c = mDb.rawQuery(simpleRequestFilter.getQuery(), simpleRequestFilter.getArguments());
 
         if (c.moveToNext()) {
             Bottle bottle = new Bottle();
@@ -56,9 +62,12 @@ public class BottleDao extends AbstractDao {
     }
 
     public List<Bottle> readAllBottleFromName (String name) {
-        String query = "SELECT * FROM BOTTLE_TABLE WHERE name = ?";
+        SimpleRequestFilter simpleRequestFilter = new SimpleRequestFilter("BOTTLE_TABLE");
+        simpleRequestFilter.addArgument("name", name);
+        simpleRequestFilter.buildArgument();
 
-        Cursor c = mDb.rawQuery(query, new String[] {name});
+        Cursor c = mDb.rawQuery(simpleRequestFilter.getQuery(), simpleRequestFilter.getArguments());
+
         List<Bottle> bottles = new ArrayList<>();
 
         while (c.moveToNext()) {
@@ -75,9 +84,11 @@ public class BottleDao extends AbstractDao {
     }
 
     public List<Bottle> readAllBottle () {
-        String query = "SELECT * FROM BOTTLE_TABLE";
+        SimpleRequestFilter simpleRequestFilter = new SimpleRequestFilter("BOTTLE_TABLE");
+        simpleRequestFilter.buildArgument();
 
-        Cursor c = mDb.rawQuery(query, new String[0]);
+        Cursor c = mDb.rawQuery(simpleRequestFilter.getQuery(), simpleRequestFilter.getArguments());
+
         List<Bottle> bottles = new ArrayList<>();
 
         while (c.moveToNext()) {
@@ -92,6 +103,19 @@ public class BottleDao extends AbstractDao {
         }
 
         return bottles;
+    }
+
+    public List<String> readAllBottleName () {
+        String query = "SELECT DISTINCT BOTTLE_TABLE." + BOTTLE_NAME + " FROM BOTTLE_TABLE";
+
+        Cursor c = mDb.rawQuery(query, new String[0]);
+        List<String> bottleNames = new ArrayList<>();
+
+        while (c.moveToNext()) {
+            bottleNames.add(c.getString((0)));
+        }
+
+        return bottleNames;
     }
 
     public void createBottle (Bottle bottle) {

@@ -3,14 +3,13 @@ package fr.hanquezr.automatedbarapp.bdd.dao;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
+import fr.hanquezr.automatedbarapp.bdd.dao.builder.SimpleRequestFilter;
 import fr.hanquezr.automatedbarapp.model.Cocktail;
 
 public class CocktailDao extends AbstractDao {
@@ -19,23 +18,13 @@ public class CocktailDao extends AbstractDao {
         super(context);
     }
 
-    private Map<String, Double> getIngredients (Cocktail cocktail) {
-        String queryAsso = "SELECT * FROM ASSO_TABLE WHERE " + ASSO_COCKTAIL_NAME + " = ?";
+    public Cocktail read (String cocktailName) {
+        SimpleRequestFilter filterCocktailRequestBuilder = new SimpleRequestFilter("COCKTAIL_TABLE");
+        filterCocktailRequestBuilder.addArgument(COCKTAIL_NAME, cocktailName);
+        filterCocktailRequestBuilder.buildArgument();
 
-        Cursor cAsso = mDb.rawQuery(queryAsso, new String[] {cocktail.getName()});
-        Map<String, Double> ingredients = new HashMap<>();
-
-        while (cAsso.moveToNext()) {
-            ingredients.put(cAsso.getString(0), Double.valueOf(cAsso.getString(2)));
-        }
-
-        return ingredients;
-    }
-
-    public Cocktail readCocktailFromName (String cocktailName) {
-        String query = "SELECT * FROM COCKTAIL_TABLE WHERE " + COCKTAIL_NAME + " = ?";
-
-        Cursor c = mDb.rawQuery(query, new String[] {cocktailName});
+        Cursor c = mDb.rawQuery(filterCocktailRequestBuilder.getQuery(),
+                filterCocktailRequestBuilder.getArguments());
 
         if (c.moveToNext()) {
             Cocktail cocktail = new Cocktail();
@@ -49,10 +38,13 @@ public class CocktailDao extends AbstractDao {
         return null;
     }
 
-    public List<Cocktail> readAllCocktail () {
-        String query = "SELECT * FROM COCKTAIL_TABLE";
+    public List<Cocktail> readWithFilter (String cocktailName, String bottleName) {
+        SimpleRequestFilter filterCocktailRequestBuilder = new SimpleRequestFilter("COCKTAIL_TABLE");
+        filterCocktailRequestBuilder.addArgument(COCKTAIL_NAME, cocktailName);
+        filterCocktailRequestBuilder.buildArgument();
 
-        Cursor c = mDb.rawQuery(query, new String[0]);
+        Cursor c = mDb.rawQuery(filterCocktailRequestBuilder.getQuery(),
+                filterCocktailRequestBuilder.getArguments());
         List<Cocktail> cocktails = new ArrayList<>();
 
         while (c.moveToNext()) {
@@ -81,6 +73,19 @@ public class CocktailDao extends AbstractDao {
 
     public void removeCocktail (String cocktailName) {
         mDb.delete("COCKTAIL_TABLE", COCKTAIL_NAME + " = ?", new String[] {cocktailName});
+    }
+
+    private Map<String, Double> getIngredients (Cocktail cocktail) {
+        String queryAsso = "SELECT * FROM ASSO_TABLE WHERE " + ASSO_COCKTAIL_NAME + " = ?";
+
+        Cursor cAsso = mDb.rawQuery(queryAsso, new String[] {cocktail.getName()});
+        Map<String, Double> ingredients = new HashMap<>();
+
+        while (cAsso.moveToNext()) {
+            ingredients.put(cAsso.getString(0), Double.valueOf(cAsso.getString(2)));
+        }
+
+        return ingredients;
     }
 
 }

@@ -13,6 +13,8 @@ import java.util.List;
 
 import fr.hanquezr.automatedbarapp.bdd.dao.CocktailDao;
 import fr.hanquezr.automatedbarapp.model.Cocktail;
+import fr.hanquezr.automatedbarapp.utils.Constant;
+import fr.hanquezr.automatedbarapp.utils.PropertyUtils;
 
 public class MyCocktailRecyclerViewAdapter extends RecyclerView.Adapter<MyCocktailRecyclerViewAdapter.ViewHolder> {
 
@@ -20,9 +22,11 @@ public class MyCocktailRecyclerViewAdapter extends RecyclerView.Adapter<MyCockta
     private CocktailFragment cocktailFragment;
 
     public MyCocktailRecyclerViewAdapter(Context context, CocktailFragment cocktailFragment) {
+        PropertyUtils propertyUtils = new PropertyUtils(context);
         CocktailDao cocktailDao = new CocktailDao(context);
         cocktailDao.open();
-        cocktails = cocktailDao.readAllCocktail();
+        cocktails = cocktailDao.readWithFilter(propertyUtils.getProperty(Constant.COCKTAIL_NAME_FILTER),
+                propertyUtils.getProperty(Constant.BOTTLE_NAME_FILTER));
         cocktailDao.close();
         this.cocktailFragment = cocktailFragment;
     }
@@ -37,7 +41,6 @@ public class MyCocktailRecyclerViewAdapter extends RecyclerView.Adapter<MyCockta
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.cocktailImage.setImageResource(R.drawable.roman_cosmo_martini_cocktail);
-        //holder.mIdView.setText(mValues.get(position).getId());
         holder.cocktailName.setText(cocktails.get(position).getName());
 
         holder.cocktailImage.setOnClickListener(new View.OnClickListener() {

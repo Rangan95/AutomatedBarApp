@@ -5,10 +5,46 @@
     android:layout_height="match_parent"
     tools:context=".SearchFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
+        android:id="@+id/searchview_global_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="A venir dans une prochaine mise à jour !" />
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/searchview_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/searchview_title"
+            style="@style/ViewTitle"/>
+
+        <EditText
+            android:id="@+id/searchview_cocktail_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/searchview_cocktail_name_label"/>
+
+        <LinearLayout
+            android:id="@+id/searchview_alcool_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_marginTop="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/searchview_alcool_label"/>
+
+            <Spinner
+                android:layout_marginLeft="5dp"
+                android:id="@+id/searchview_spinner_alcool"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center" />
+
+        </LinearLayout>
+
+    </LinearLayout>
 
 </FrameLayout>
