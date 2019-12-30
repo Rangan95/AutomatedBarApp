@@ -22,8 +22,11 @@ public class SimpleRequestFilter {
             int cpt = 0;
 
             for (String key : argumentValues.keySet()) {
+                if (cpt > 0)
+                    query += " AND";
                 query += " " + key + " LIKE ?";
                 arguments[cpt] = "%" + argumentValues.get(key) + "%";
+                cpt++;
             }
         }
     }

@@ -20,6 +20,7 @@
         android:layout_gravity="center"
         android:textColor="#000"
         android:textStyle="bold"
+        style="@style/CocktailListTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 </LinearLayout>

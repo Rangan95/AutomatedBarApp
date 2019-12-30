@@ -2,6 +2,7 @@ package fr.hanquezr.automatedbarapp;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,9 +41,11 @@ public class CocktailViewFragment extends Fragment {
 
         ((TextView)rootView.findViewById(R.id.view_cocktail_name)).setText(cocktail.getName());
 
+
+
         for (Map.Entry<String, Double> ingredient : cocktail.getIngredients().entrySet()) {
             ((TextView)rootView.findViewById(R.id.view_cocktail_textview)).setText(((TextView)rootView.findViewById(R.id.view_cocktail_textview)).getText().toString()
-                    + ingredient.getKey() + " " + ingredient.getValue() + "L\n");
+                    + ingredient.getKey() + " " + (ingredient.getValue() * 1000) + "ml\n");
         }
 
         rootView.findViewById(R.id.view_cocktail_back).setOnClickListener(new View.OnClickListener() {

@@ -8,9 +8,16 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.io.IOException;
+
+import fr.hanquezr.automatedbarapp.bdd.dao.BottleDao;
+import fr.hanquezr.automatedbarapp.bdd.dao.CocktailDao;
+import fr.hanquezr.automatedbarapp.bdd.dao.Dao;
 import fr.hanquezr.automatedbarapp.serverCall.ServerCallClean;
 import fr.hanquezr.automatedbarapp.serverCall.ServerCallPurge;
 import fr.hanquezr.automatedbarapp.serverCall.ServerCallTest;
+import fr.hanquezr.automatedbarapp.utils.BottlesIntegration;
+import fr.hanquezr.automatedbarapp.utils.CocktailsIntegration;
 import fr.hanquezr.automatedbarapp.utils.PropertyUtils;
 import fr.hanquezr.automatedbarapp.utils.StringValidator;
 
@@ -72,6 +79,38 @@ public class AdminFragment extends Fragment {
                 } else {
                     Toast.makeText(getContext(), "L'adresse IP est incorrect", Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+
+        rootView.findViewById(R.id.fill_bdd).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(), "Intégration En cours...", Toast.LENGTH_SHORT).show();
+                BottlesIntegration bottlesIntegration = new BottlesIntegration(getContext());
+                CocktailsIntegration cocktailsIntegration = new CocktailsIntegration(getContext());
+
+                try {
+                    bottlesIntegration.integrateBottlesFromFile();
+                    cocktailsIntegration.integrateCocktailsFromFile();
+                    Toast.makeText(getContext(), "Intégration réussi", Toast.LENGTH_SHORT).show();
+                } catch (Exception e) {
+                    Toast.makeText(getContext(), "Une erreur est survenue lors de l'import : " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        rootView.findViewById(R.id.empty_bdd).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(), "Suppression en cours...", Toast.LENGTH_SHORT).show();
+
+                Dao dao = new Dao(getContext());
+                dao.open();
+                dao.cleanData();
+                dao.close();
+
+                Toast.makeText(getContext(), "Suppression réussi", Toast.LENGTH_SHORT).show();
             }
         });
 

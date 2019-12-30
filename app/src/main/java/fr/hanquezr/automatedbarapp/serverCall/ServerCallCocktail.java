@@ -63,18 +63,41 @@ public class ServerCallCocktail extends AsyncTask<Cocktail, Void, String> {
         return true;
     }
 
+    private String checkBottleQuantity(Cocktail cocktail) {
+        for (Map.Entry<String, Double> ingredient : cocktail.getIngredients().entrySet()) {
+            BottleDao bottleDao = new BottleDao(context);
+            bottleDao.open();
+            List<Bottle> bottles = bottleDao.readAllBottleFromName(ingredient.getKey().replace(" ", "_"));
+            bottleDao.close();
+
+            for (Bottle bottle : bottles) {
+                PlaceDao placeDao = new PlaceDao(context);
+                placeDao.open();
+                int place = placeDao.readPlaceFromBottleId(String.valueOf(bottle.getId()));
+                placeDao.close();
+
+                if (place != -1) {
+                    if ((bottle.getActuCapacity() - ingredient.getValue()) < 0)
+                        return "La bouteille " + bottle.getName() + " n'est plus assez pleine pour ce cocktail";
+                }
+            }
+        }
+
+        return null;
+    }
+
     @Override
     protected String doInBackground(Cocktail... params) {
         String error = null;
-        if (checkBottles(params[0])) {
+        if (!checkBottles(params[0])) {
+            return "Il manque une ou plusieurs bouteille(s) sur les pompes";
+        } else if ((error = checkBottleQuantity(params[0])) == null) {
             error = open();
 
             if (error == null)
                 error = runCocktail(params[0]);
             if (error == null)
                 error = close();
-        } else {
-            error = "Il manque une ou plusieurs bouteille(s) sur les pompes";
         }
 
         return error;
@@ -118,11 +141,28 @@ public class ServerCallCocktail extends AsyncTask<Cocktail, Void, String> {
         try {
             out.println(runRequestConstructor(cocktail));
             errorServerTreatment(in.readLine());
+            updateBottle(cocktail);
         } catch (Exception e) {
             error = "Erreur server : " + e.getMessage();
         }
 
         return error;
+    }
+
+    private void updateBottle(Cocktail cocktail) {
+        int cpt = 0;
+
+        for (Map.Entry<String, Double> ingredient : cocktail.getIngredients().entrySet()) {
+            cpt++;
+            BottleDao bottleDao = new BottleDao(context);
+            bottleDao.open();
+            List<Bottle> bottles = bottleDao.readAllBottleFromName(ingredient.getKey().replace(" ", "_"));
+
+            for (Bottle bottle : bottles) {
+                bottle.setActuCapacity(bottle.getActuCapacity() - ingredient.getValue());
+                bottleDao.updateBottle(bottle);
+            }
+        }
     }
 
     private String runRequestConstructor (Cocktail cocktail) {

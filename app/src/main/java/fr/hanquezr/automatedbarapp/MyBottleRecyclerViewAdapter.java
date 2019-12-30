@@ -1,5 +1,7 @@
 package fr.hanquezr.automatedbarapp;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -38,7 +40,7 @@ public class MyBottleRecyclerViewAdapter extends RecyclerView.Adapter<MyBottleRe
         holder.label.setText("Pompe " + (position+1));
         final List<String> data = new ArrayList<>();
         data.add("None");
-        BottleDao bottleDao = new BottleDao(holder.mView.getContext());
+        final BottleDao bottleDao = new BottleDao(holder.mView.getContext());
         bottleDao.open();
 
         for (Bottle bottle : bottleDao.readAllBottle()) {
@@ -71,13 +73,36 @@ public class MyBottleRecyclerViewAdapter extends RecyclerView.Adapter<MyBottleRe
                     placeDao.updatePlace(place, -1);
                     placeDao.close();
                 } else {
-                    BottleDao bottleDaoSpinner = new BottleDao(holder.mView.getContext());
+                    final BottleDao bottleDaoSpinner = new BottleDao(holder.mView.getContext());
                     bottleDaoSpinner.open();
+                    final Bottle bottle = bottleDaoSpinner.readBottleFromNameAndMaxCapacity(data.get(position).split("-")[0].replace(" ", "_"), data.get(position).split("-")[1].replace("L", ""));
 
                     PlaceDao placeDao = new PlaceDao(holder.mView.getContext());
                     placeDao.open();
 
-                    placeDao.updatePlace(place, bottleDaoSpinner.readBottleFromNameAndMaxCapacity(data.get(position).split("-")[0].replace(" ", "_"), data.get(position).split("-")[1].replace("L", "")).getId());
+                    new AlertDialog.Builder(holder.mView.getContext(), R.style.AlertDialogTheme)
+                    .setCancelable(true)
+                    .setTitle("Nouvelle bouteille")
+                    .setMessage("Est-ce une nouvelle bouteille ?")
+                    .setPositiveButton("Oui", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            BottleDao bottleDaoDialog = new BottleDao(holder.mView.getContext());
+                            bottleDaoDialog.open();
+                            bottle.setActuCapacity(bottle.getMaxCapacity());
+                            bottleDaoDialog.updateBottle(bottle);
+                            bottleDaoDialog.close();
+                            Toast.makeText(holder.mView.getContext(), "Remise à zéro : " + bottle.getActuCapacity(), Toast.LENGTH_SHORT).show();
+                        }
+                    })
+                    .setNegativeButton("Non", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                        }
+                    })
+                    .create().show();
+
+                    placeDao.updatePlace(place, bottle.getId());
 
                     placeDao.close();
                     bottleDaoSpinner.close();

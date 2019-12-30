@@ -4,7 +4,6 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.util.Log;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +11,7 @@ import java.util.List;
 import fr.hanquezr.automatedbarapp.bdd.dao.builder.SimpleRequestFilter;
 import fr.hanquezr.automatedbarapp.model.Bottle;
 
-public class BottleDao extends AbstractDao {
+public class BottleDao extends Dao {
 
     public BottleDao(Context context) {
         super(context);
@@ -40,6 +39,8 @@ public class BottleDao extends AbstractDao {
     }
 
     public Bottle readBottleFromNameAndMaxCapacity (String name, String maxCapacity) {
+        Log.i("name", name);
+        Log.i("maxCapacity", maxCapacity);
         SimpleRequestFilter simpleRequestFilter = new SimpleRequestFilter("BOTTLE_TABLE");
         simpleRequestFilter.addArgument("name", name);
         simpleRequestFilter.addArgument("maxCapacity", maxCapacity);
@@ -135,11 +136,7 @@ public class BottleDao extends AbstractDao {
         values.put(BOTTLE_ACTU_CAPACITY, bottle.getActuCapacity());
         values.put(BOTTLE_VISCOUS, bottle.isViscous());
 
-        mDb.update("BOTTLE_TABLE", values, BOTTLE_ID + " = ?", new String[]{String.valueOf(bottle.getId())});
-    }
-
-    public void cleanData () {
-        mDb.delete("BOTTLE_TABLE", null, null);
+        mDb.update("BOTTLE_TABLE", values, BOTTLE_ID + "=" + bottle.getId(), null);
     }
 
 }

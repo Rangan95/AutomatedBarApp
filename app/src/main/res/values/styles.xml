@@ -21,13 +21,28 @@
         <item name="android:gravity">center</item>
         <item name="android:textColor">#000</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textSize">40sp</item>
+        <item name="android:textSize">25sp</item>
+        <item name="android:layout_marginBottom">30sp</item>
+    </style>
+
+    <style name="CocktailListTitle" parent="@android:style/Widget.TextView">
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">#000</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">20sp</item>
         <item name="android:layout_marginBottom">30sp</item>
     </style>
 
     <style name="CocktailIngredients" parent="@android:style/Widget.TextView">
         <item name="android:gravity">center</item>
-        <item name="android:textSize">15sp</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="AlertDialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="borderlessButtonStyle">@style/Widget.AppCompat.Button.Borderless.Colored</item>
     </style>
 
 </resources>

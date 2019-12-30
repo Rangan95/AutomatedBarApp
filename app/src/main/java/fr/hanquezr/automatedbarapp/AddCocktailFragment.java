@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.method.ScrollingMovementMethod;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -72,10 +73,10 @@ public class AddCocktailFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 ingredients.put(((Spinner)rootView.findViewById(R.id.spinner_cocktail_bottle)).getSelectedItem().toString(),
-                        Double.valueOf(((EditText)rootView.findViewById(R.id.edittext_cocktail_quantity)).getText().toString()));
+                        (Double.valueOf(((EditText)rootView.findViewById(R.id.edittext_cocktail_quantity)).getText().toString()) / 1000));
                 ((TextView)rootView.findViewById(R.id.add_cocktail_textview)).setText(((TextView)rootView.findViewById(R.id.add_cocktail_textview)).getText().toString() +
                         ((Spinner)rootView.findViewById(R.id.spinner_cocktail_bottle)).getSelectedItem().toString() + " "
-                        + ((EditText)rootView.findViewById(R.id.edittext_cocktail_quantity)).getText().toString() + "L\n");
+                        + ((EditText)rootView.findViewById(R.id.edittext_cocktail_quantity)).getText().toString() + "ml\n");
             }
         });
 

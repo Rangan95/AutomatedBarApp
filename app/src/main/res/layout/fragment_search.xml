@@ -25,6 +25,7 @@
             android:hint="@string/searchview_cocktail_name_label"/>
 
         <LinearLayout
+            android:layout_marginTop="25dp"
             android:id="@+id/searchview_alcool_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -44,6 +45,19 @@
                 android:textAlignment="center" />
 
         </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1px"
+            android:background="#FF909090"
+            android:layout_marginTop="25dp"/>
+
+        <Button
+            android:id="@+id/alea_cocktail"
+            android:layout_marginTop="25dp"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="Cocktail aléatoire" />
 
     </LinearLayout>
 

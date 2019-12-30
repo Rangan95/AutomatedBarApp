@@ -1,0 +1,64 @@
+Vodka;0.70;false
+Vodka;1;false
+Vodka;1.5;false
+Vodka;2;false
+Rhum;0.70;false
+Rhum;1;false
+Rhum;1.5;false
+Rhum;2;false
+Jus de pomme;0.70;false
+Jus de pomme;1;false
+Jus de pomme;1.5;false
+Jus de pomme;2;false
+Sucre;0.70;true
+Sucre;1;true
+Sucre;1.5;true
+Sucre;2;true
+Jus de citron vert;0.70;false
+Jus de citron vert;1;false
+Jus de citron vert;1.5;false
+Jus de citron vert;2;false
+Sirop de grenadine;0.70;true
+Sirop de grenadine;1;true
+Sirop de grenadine;1.5;true
+Sirop de grenadine;2;true
+Curacao;0.70;false
+Curacao;1;false
+Curacao;1.5;false
+Curacao;2;false
+Jus d'ananas;0.70;false
+Jus d'ananas;1;false
+Jus d'ananas;1.5;false
+Jus d'ananas;2;false
+Gin;0.70;false
+Gin;1;false
+Gin;1.5;false
+Gin;2;false
+Whisky;0.70;false
+Whisky;1;false
+Whisky;1.5;false
+Whisky;2;false
+Martini;0.70;false
+Martini;1;false
+Martini;1.5;false
+Martini;2;false
+Jus d'airelle;0.70;false
+Jus d'airelle;1;false
+Jus d'airelle;1.5;false
+Jus d'airelle;2;false
+Jus de pamplemousse;0.70;false
+Jus de pamplemousse;1;false
+Jus de pamplemousse;1.5;false
+Jus de pamplemousse;2;false
+Jus d'orange;0.70;false
+Jus d'orange;1;false
+Jus d'orange;1.5;false
+Jus d'orange;2;false
+Liqueur de cafe;0.70;true
+Liqueur de cafe;1;true
+Liqueur de cafe;1.5;true
+Liqueur de cafe;2;true
+Lait noix de coco;0.70;false
+Lait noix de coco;1;false
+Lait noix de coco;1.5;false
+Lait noix de coco;2;false

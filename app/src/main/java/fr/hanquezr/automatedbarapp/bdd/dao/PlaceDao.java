@@ -3,15 +3,13 @@ package fr.hanquezr.automatedbarapp.bdd.dao;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import android.util.Log;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import fr.hanquezr.automatedbarapp.model.Bottle;
 
-public class PlaceDao extends AbstractDao {
+public class PlaceDao extends Dao {
 
     Context context;
 

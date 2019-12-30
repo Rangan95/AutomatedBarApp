@@ -14,7 +14,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dip"
-            android:layout_weight="88"
+            android:layout_weight="450"
             android:id="@+id/cocktailView"
             android:orientation="horizontal">
 
@@ -32,7 +32,7 @@
 
                 <ScrollView
                     android:layout_width="match_parent"
-                    android:layout_height="100dp">
+                    android:layout_height="160dp">
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -44,16 +44,17 @@
             <ImageView
                 android:id="@+id/cocktail_view_image"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_gravity="right"
                 android:adjustViewBounds="true"
-                android:padding="5dp"/>
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"/>
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dip"
+            android:layout_height="wrap_content"
             android:layout_weight="12"
             android:gravity="center|bottom"
             android:orientation="vertical">
@@ -64,21 +65,21 @@
 
                 <Button
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="60dp"
                     android:layout_weight="0.2"
                     android:id="@+id/view_cocktail_back"
                     android:text="Retour"/>
 
                 <Button
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="60dp"
                     android:layout_weight="0.2"
                     android:id="@+id/view_cocktail_delete"
                     android:text="Supprimer"/>
 
                 <Button
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="60dp"
                     android:layout_weight="0.6"
                     android:id="@+id/view_cocktail_launch"
                     android:text="Lancer"/>

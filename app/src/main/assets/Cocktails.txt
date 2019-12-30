@@ -1,0 +1,95 @@
+Apple Martini;Vodka;6;Jus de pomme;52.5;Sucre;2.5
+Bacardi Cocktail;Rhum;60;Citron;1.5;Sirop de grenadine;7.5;Sucre;5
+Blue Hawai;Curacao;15;Jus d'ananas;90;Citron;30;Sucre;5;Rhum;45
+Blue Passion;Rhum;30;Curacao;30;Jus de citron vert;52.5;Sucre;10
+Brass Monkey;Rhum;30;Vodka;30;Jus de citron vert;75;Sucre;10
+Daiquiri;Rhum;75;Jus de citron vert;22.5;Sucre;10
+El Presidente;Rhum;60;Jus d'ananas;22.5;Jus de citron vert;15;Sirop de grenadine;7.5
+Fourth of July Shot;Sirop de grenadine;7.5;Curacao;15;Vodka;15
+Honolulu;Rhum;45;Jus d'ananas;30;Jus de citron vert;15;Sucre;5;Sirop de grenadine;7.5
+Hunk Cockail;Vodka;60;Jus d'ananas;52.5;Jus de citron vert;15;Sucre;5
+Pina Colada Cubain;Rhum;60;Jus d'ananas;120;Sucre;5;Jus de citron vert;7.5
+Tabu;Rhum;30;Vodka;30;Jus d'ananas;45;Jus de citron vert;15;Sucre;5
+Ti Punch;Rhum;45;Sucre;7.5
+Treacle;Rhum;60;Sucre;5;Jus de pomme;15
+Zac's Daiquiri;Rhum;60;Jus de citron vert;15;Jus de pomme;15;Sucre;5
+Cosmopolitan Cocktail;Vodka;45;Martini;15;Jus d'airelle;30;Jus de citron vert;7.5
+Cranapple Breeze;Vodka;30;Martini;30;Jus d'airelle;30;Jus de pomme;30;Jus de citron vert;15
+Crapple;Jus d'airelle;75;Jus de pomme;60;Jus de citron vert;30;Sucre;10
+Croue Cocktail;Whisky;60;Citron;30;Sirop de grenadine;15
+Cuban Island;Rhum;60;Martini;15;Jus de citron vert;15;Sucre;5
+CVO Firevault;Vodka;45;Martini;22.5;Jus d'orange;22.5;Jus d'ananas;22.5
+Devby Daiquiri;Rhum;60;Orange;22.5;Jus de citron vert;15;Sucre;5
+Dyevitchka;Vodka;30;Martini;30;Jus de citron vert;15;Sucre;5;Jus d'ananas;45
+El Coco;Rhum;60;Lait noix de coco;30;Sucre;5;Jus de citron vert;5
+Fibber McGee;Gin;60;Martini;30;Jus de pamplemousse;30
+Fitzgerald;Gin;60;Sucre;10;Jus de citron vert;30
+Flamingo;Rhum;60;Jus d'ananas;45;Jus de citron vert;15;Sirop de grenadine;5
+The Flo Ziegfeld;Gin;60;Jus d'ananas;30;Sucre;5
+Flying Scotsman;Jus d'orange;60;Martini;60;Sucre;5
+Gentle Breeze;Jus d'airelle;120;Jus de pamplemousse;60
+Georgetown Punch;Rhum;50;Jus d'airelle;15;jus d'ananas;15;Jus de citron vert;11
+Gin and Juice;Gin;60;Jus d'orange;75;Jus de pamplemousse;45
+Gin Daisu;Gin;60;Jus de citron vert;30;Sirop de grenadine;15;
+GrapeFruit Daiquiri;Rhum;60;Jus de pamplemousse;45;Sucre;15
+Gun Club;Rhum;60;Jus de citron vert;30;Jus d'ananas;45;Martini;7.5;Sirop de grenadine;7.5
+Key West Cooler;Vodka;60;Rhum;30;Jus d'airelle;45;Jus d'orange;45;
+Livingstone;Gin;60;Martini;30;Sucre;5
+London Cospolitan;Gin;30;Martini;30;Jus d'airelle;45;Jus de citron vert;15
+M.G.F;Vodka;60;Jus de pamplemousse;30;Jus de citron vert;30;Sucre;10
+Merry Widow;Vodka;37.5;Martini;75;Jus d'orange;5
+Mountain Spinner;Whisky;60;Martini;30;Jus d'airelle;30;Jus de pamplemousse;30;Sucre;3
+Nantucket;Rhum;60;Jus d'airelle;90;Jus de pamplemousse;60
+Nevada Daiquiri;Rhum;60;Jus de pamplemousse;30;Jus de citron vert;15;Sucre;10
+Not So Cosmo;Jus d'orange;30;Jus d'airelle;30;Jus de citron vert;30
+Hawaiian Martini;Gin;60;Martini;15;Jus d'ananas;45
+Hawaiian Stone Soun;Whisky;45;Jus de citron vert;22.5;Jus d'ananas;30;Sucre;10
+Highlander;Jus d'orange;60;Martini;30
+Hobson's Choice;Jus d'orange;75;Jus de pomme;75;Jus de citron vert;30;Sirop de grenadine;7.5
+Illicit Affair;Vodka;60;Jus d'orange;52.5;Jus d'airelle;52.5
+Ink Martini;Vodka;60;Curacao;15;Jus d'airelle;45
+Jamaican Sunset;Rhum;45;Jus d'airelle;45;Jus d'orange;90
+James Joyce;Whisky;45;Martini;45;Jus de citron vert;15;
+Jodi May;Whisky;45;Martini;15;Jus d'orange;75;Jus d'airelle;45;Jus de citron vert;7.5
+Jungle Juice;Vodka;30;Rhum;30;Martini;15;Jus d'airelle;30;Jus d'orange;30;Jus d'ananas;30;Jus de citron vert;22.5;Sucre;5
+Pineapple Fix;Rhum;60;Jus d'ananas;30;Jus de citron vert;30;Sucre;10
+Pink Hound;Gin;60;Jus de pamplemousse;45;Sirop de grenadine;7.5
+Planteur;Rhum;60;Sirop de grenadine;7.5;Jus d'orange;105
+Pogo Stick;Gin;60;Jus d'ananas;15;Jus de pamplemousse;15;Jus de citron vert;15;Sucre;10
+Queen Martini;Gin;45;Martini;30;Jus d'orange;15;Jus d'ananas;15
+Roosevelt Cocktail;Rhum;52.5;Martini;22.5;Jus d'orange;7.5;Sucre;5
+Sea Breeze;Vodka;60;Jus d'airelle;90;Jus de pamplemousse;45
+Shark Bits;Rhum;60;Jus d'orange;90;Jus de citron vert;15;Sirop de grenadine;22.5
+Slow Screw;Vodka;45;Gin;22.5;Jus d'orange;105
+Smoky Martini;Gin;60;Whisky;7.5;Martini;15
+Stanley Cocktail;Gin;45;Rhum;45;Jus de citron vert;15;Sirop de grenadine;15
+Ocean Breeze;Vodka;60;Jus d'airelle;75;Jus de pamplemousse;45;Jus d'ananas;15
+Opening Shot;Whisky;30;Martini;15;Sirop de grenadine;5
+Orang-A-Tang;Vodka;45;Martini;22.5;Jus d'orange;60;Jus de citron vert;15;Sirop de grenadine;7.5;Rhum;15
+Orange Blossom;Gin;45;Martini;15;Jus d'orange;45;Jus de citron vert;15;Sirop de grenadine;5
+Pain Killer;Rhum;60;Jus d'ananas;60;Jus d'orange;30;Lait noix de coco;30
+Paisley Martini;Gin;75;Whisky;7.5;Martini;15
+Pina Colada Portoricain;Rhum;60;Jus d'ananas;90;Lait noix de coco;20;Jus de citron vert;15
+Pina Martini;Vodka;60;Jus d'ananas;52.5;Jus de citron vert;7.5;Sucre;3
+Pineapple Blosson;Whisky;60;Jus d'ananas;30;Jus de citron vert;15;Sucre;10
+Addison;Gin;45;Martini;45
+Apple Breeze;Vodka;60;Jus de pomme;75;Jus d'airelle;45
+Army Martini;Gin;75;Martini;7.5;Sirop de grenadine;7.5
+Baby Blue Martini;Gin;60;Curacao;22.5;Jus de pamplemousse;22.5;Jus d'ananas;22.5
+Bay Breeze;Vodka;60;Jus d'airelle;45;Jus d'ananas;75
+Between Decks;Gin;75;Jus d'orange;30;Jus d'airelle;30;Jus de citron vert;15;Sucre;5
+Blue Mountain Cocktail;Rhum;45;Vodka;15;Liqueur de cafe;15;Jus de d'orange;
+Black Russian;Vodka;60;Liqueur de cafe;22.5
+Bronx;Gin;45;Martini;45;Jus d'orange;30
+Bahamas Daiquiri;Rhum;45;Lait noix de coco;22.5;Liqueur de cafe;7.5;Jus d'ananas;45;Jus de citron vert;15
+Bahia;Rhum;75;Lait noix de coco;15;Jus d'ananas;90
+Blue Eyed Martini;Vodka;45;Gin;15;Curacao;5;Martini;7.5
+Cape Codder;Vodka;60;Jus d'airelle;90;Jus de citron vert;7.5
+Clipper Cocktail;Rhum;60;Martini;60;Sirop de grenadine;15
+Coffee Negroni;Gin;30;Martini;40;Liqueur de cafe;10
+Sunshine cocktail;Rhum;45;Martini;45;Jus d'ananas;45;Sirop de grenadine;5
+Texsun;Whisky;45;Martini;45;Jus de pamplemousse;45
+Thriller Martini;Whisky;60;Gin;22.5;Jus d'orange;22.5;Sucre;5
+Tolleytown Punchi;Whisky;60;Jus d'airelle;60;Jus d'ananas;15;Jus d'orange;15
+Voodoo;Rhum;60;Martini;22.5;Jus de pomme;75;Jus de citron vert;15;Sucre;5
+The Wentuorth;Whisky;37.5;Martini;37.5;Jus d'airelle;37.5

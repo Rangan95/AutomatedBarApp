@@ -3,19 +3,43 @@ package fr.hanquezr.automatedbarapp.bdd.dao;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 import fr.hanquezr.automatedbarapp.bdd.dao.builder.SimpleRequestFilter;
 import fr.hanquezr.automatedbarapp.model.Cocktail;
 
-public class CocktailDao extends AbstractDao {
+public class CocktailDao extends Dao {
 
     public CocktailDao(Context context) {
         super(context);
+    }
+
+    public boolean isEmpty () {
+        SimpleRequestFilter filterCocktailRequestBuilder = new SimpleRequestFilter("COCKTAIL_TABLE");
+
+        return mDb.rawQuery(filterCocktailRequestBuilder.getQuery(),
+                null).getCount() == 0;
+    }
+
+    public Cocktail readAlea () {
+        SimpleRequestFilter filterCocktailRequestBuilder = new SimpleRequestFilter("COCKTAIL_TABLE");
+
+        Cursor c = mDb.rawQuery(filterCocktailRequestBuilder.getQuery(),
+                null);
+
+        c.moveToPosition(new Random().nextInt(c.getCount()));
+        Cocktail cocktail = new Cocktail();
+        cocktail.setName(c.getString(0));
+
+        cocktail.setIngredients(getIngredients(cocktail));
+
+        return cocktail;
     }
 
     public Cocktail read (String cocktailName) {
@@ -51,7 +75,12 @@ public class CocktailDao extends AbstractDao {
             Cocktail cocktail = new Cocktail();
             cocktail.setName(c.getString(0));
             cocktail.setIngredients(getIngredients(cocktail));
-            cocktails.add(cocktail);
+
+            Log.i("Name", bottleName);
+            Log.i("Name", ""+"None".equals(bottleName));
+
+            if ("None".equals(bottleName) || cocktail.getIngredients().containsKey(bottleName))
+                cocktails.add(cocktail);
         }
 
         return cocktails;

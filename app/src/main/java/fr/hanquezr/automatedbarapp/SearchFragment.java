@@ -1,7 +1,9 @@
 package fr.hanquezr.automatedbarapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -9,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
@@ -16,6 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fr.hanquezr.automatedbarapp.bdd.dao.BottleDao;
+import fr.hanquezr.automatedbarapp.bdd.dao.CocktailDao;
 import fr.hanquezr.automatedbarapp.bdd.dao.PlaceDao;
 import fr.hanquezr.automatedbarapp.model.Bottle;
 import fr.hanquezr.automatedbarapp.utils.PropertyUtils;
@@ -30,13 +34,13 @@ public class SearchFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(LayoutInflater inflater, final ViewGroup container,
                              Bundle savedInstanceState) {
         View view =  inflater.inflate(R.layout.fragment_search, container, false);
 
         final PropertyUtils propertyUtils = new PropertyUtils(getContext());
 
-        EditText editText = view.findViewById(R.id.searchview_cocktail_name);
+        final EditText editText = view.findViewById(R.id.searchview_cocktail_name);
 
         if (!"".equals(propertyUtils.getProperty(COCKTAIL_NAME_FILTER)))
             editText.setText(propertyUtils.getProperty(COCKTAIL_NAME_FILTER));
@@ -55,6 +59,21 @@ public class SearchFragment extends Fragment {
             @Override
             public void afterTextChanged(Editable s) {
                 propertyUtils.saveProperty(COCKTAIL_NAME_FILTER, s.toString());
+            }
+        });
+
+        CocktailDao cocktailDao = new CocktailDao(getContext());
+        cocktailDao.open();
+        view.findViewById(R.id.alea_cocktail).setEnabled(!cocktailDao.isEmpty());
+        cocktailDao.close();
+
+        view.findViewById(R.id.alea_cocktail).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CocktailDao cocktailDao = new CocktailDao(getContext());
+                cocktailDao.open();
+                editText.setText(cocktailDao.readAlea().getName());
+                cocktailDao.close();
             }
         });
 
