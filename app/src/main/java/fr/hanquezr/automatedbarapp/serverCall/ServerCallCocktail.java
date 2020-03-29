@@ -1,7 +1,9 @@
 package fr.hanquezr.automatedbarapp.serverCall;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.AsyncTask;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.util.Log;
 import android.widget.Toast;
@@ -14,6 +16,7 @@ import java.net.Socket;
 import java.util.List;
 import java.util.Map;
 
+import fr.hanquezr.automatedbarapp.R;
 import fr.hanquezr.automatedbarapp.bdd.dao.BottleDao;
 import fr.hanquezr.automatedbarapp.bdd.dao.PlaceDao;
 import fr.hanquezr.automatedbarapp.model.Bottle;
@@ -105,6 +108,7 @@ public class ServerCallCocktail extends AsyncTask<Cocktail, Void, String> {
 
     @Override
     protected void onPostExecute (String error) {
+        ((Activity) context).findViewById(R.id.view_cocktail_launch).setEnabled(true);
         if (error != null ) {
             Toast.makeText(context, error, Toast.LENGTH_LONG).show();
         } else {
@@ -117,6 +121,7 @@ public class ServerCallCocktail extends AsyncTask<Cocktail, Void, String> {
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
+        ((Activity) context).findViewById(R.id.view_cocktail_launch).setEnabled(false);
         Toast.makeText(context, "Préparation du cocktail en cours...", Toast.LENGTH_SHORT).show();
     }
 
